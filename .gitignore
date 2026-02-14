@@ -1,0 +1,6 @@
+logs/
+output/
+imagenet16/
+.vscode/
+__pycache__/
+
