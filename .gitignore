@@ -11,3 +11,8 @@ inference_models/
 inference_results/
 adaptive_compression_temp/
 *.txt
+unet.py
+model_saver.py
+parse_logs.py
+torchac_test.py
+inference_log.py
