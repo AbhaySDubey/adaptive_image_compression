@@ -3,4 +3,11 @@ output/
 imagenet16/
 .vscode/
 __pycache__/
+*.swp
+hf_space/
+validation_ds/
+imagenet16/
+inference_models/
+inference_results/
+adaptive_compression_temp/
 
