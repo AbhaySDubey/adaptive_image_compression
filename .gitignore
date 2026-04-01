@@ -10,4 +10,4 @@ imagenet16/
 inference_models/
 inference_results/
 adaptive_compression_temp/
-
+*.txt
