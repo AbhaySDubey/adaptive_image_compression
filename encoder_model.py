@@ -20,7 +20,7 @@ class Encoder(nn.Module):
         self.encoder = self._create_encoder(self.in_channels, architecture)
         
     def forward(self, x):
-        return self.encoder(x)
+        return torch.tanh(self.encoder(x))*10.0
     
     def _create_encoder(self, in_channels, architecture):
         layers = []

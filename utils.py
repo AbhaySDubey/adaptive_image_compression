@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import math
+import logging
 # import torchac
 
 
@@ -61,15 +62,23 @@ def discretized_gaussian_prob(mu, sigma, y_hat):
 
     
 # save model
-def save_checkpoint(state, filename="model_checkpoint.pth"):
-    print(f"Saving Checkpoint at {filename}...")
+def save_checkpoint(state, logger, filename="model_checkpoint.pth"):
+    logger.info(f"Saving Checkpoint at {filename}...")
     torch.save(state, filename)
 
 # load model
-def load_checkpoint(checkpoint, model, optimizer=None):
-    print("loading checkpoint...")
+def load_checkpoint(checkpoint_path, model, logger=None, optimizer=None, load_for_inference=False):
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    if logger is None:
+        print(f"loading checkpoint from...{checkpoint_path}")
+    else:
+        logger.info(f"loading checkpoint from...{checkpoint_path}")
+        
+    checkpoint = torch.load(checkpoint_path, map_location=device)
     model.load_state_dict(checkpoint['model_state_dict'])
     
-    if optimizer:
-        optimizer.load_state_dict(checkpoint['optimizer'])
+    if optimizer and not load_for_inference:
+        optimizer.load_state_dict(checkpoint['optimzier_state_dict'])
+    
     return model, optimizer
