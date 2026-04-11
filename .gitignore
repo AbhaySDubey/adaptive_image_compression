@@ -16,3 +16,4 @@ model_saver.py
 parse_logs.py
 torchac_test.py
 inference_log.py
+inference_comp_jpeg_png.py
